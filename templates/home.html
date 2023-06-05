@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Cement Strength Prediction</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<style>
+		/* Add some styles to make the page look better */
+		body {
+			font-family: Arial, sans-serif;
+			margin: 0;
+			padding: 0;
+		}
+		header {
+			background-color: #333;
+			color: #fff;
+			padding: 1rem;
+			text-align: center;
+		}
+		form {
+			margin: 2rem auto;
+			max-width: 600px;
+			padding: 2rem;
+			box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+		}
+		label {
+			display: block;
+			margin-bottom: 0.5rem;
+			font-weight: bold;
+		}
+		input[type="number"] {
+			width: 100%;
+			padding: 0.5rem;
+			border: 1px solid #ccc;
+			border-radius: 0.25rem;
+			margin-bottom: 1rem;
+			box-sizing: border-box;
+		}
+		button[type="submit"] {
+			background-color: #333;
+			color: #fff;
+			padding: 0.5rem 1rem;
+			border: none;
+			border-radius: 0.25rem;
+			cursor: pointer;
+		}
+		button[type="submit"]:hover {
+			background-color: #444;
+		}
+		.output {
+			margin: 2rem auto;
+			max-width: 600px;
+			padding: 2rem;
+			box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+		}
+		.result {
+			font-size: 2rem;
+			font-weight: bold;
+			text-align: center;
+			margin-bottom: 1rem;
+		}
+	</style>
+</head>
+<body>
+	<header>
+		<h1>Cement Strength Prediction</h1>
+	</header>
+    <div class="form-box">
+    <form action="{{url_for('predict_datapoint')}}" method="POST">
+        <div class="form-group">
+            <label for="cement">Cement (kg/m<sup>3</sup>):</label>
+            <input type="number" name="cement" step="any" min="0" id="cement" placeholder="Enter cement value (float)">
+        </div>
+
+        <div class="form-group">
+            <label for="slag">Slag (kg/m<sup>3</sup>):</label>
+            <input type="number" name="slag" step="any" min="0" id="slag" placeholder="Enter slag value (float)">
+        </div>
+
+        <div class="form-group">
+            <label for="flyash">Flyash (kg/m<sup>3</sup>):</label>
+            <input type="number" name="flyash" step="any" min="0" id="flyash" placeholder="Enter flyash value (float)">
+        </div>
+
+        <div class="form-group">
+            <label for="water">Water (kg/m<sup>3</sup>):</label>
+            <input type="number" name="water" step="any" min="0" id="water" placeholder="Enter water value (float)">
+        </div>
+
+        <div class="form-group">
+            <label for="superplasticizer">Superplasticizer (kg/m<sup>3</sup>):</label>
+            <input type="number" name="superplasticizer" step="any" min="0" id="superplasticizer" placeholder="Enter superplasticizer value (float)">
+        </div>
+
+        <div class="form-group">
+            <label for="coarseaggregate">Coarseaggregate (kg/m<sup>3</sup>):</label>
+            <input type="number" name="coarseaggregate" step="any" min="0" id="coarseaggregate" placeholder="Enter coarseaggregate value (float)">
+        </div>
+
+        <div class="form-group">
+            <label for="fineaggregate">Fineaggregate (kg/m<sup>3</sup>):</label>
+            <input type="number" name="fineaggregate" step="any" min="0" id="fineaggregate" placeholder="Enter fineaggregate value (float)">
+        </div>
+
+        <div class="form-group">
+            <label for="age">Age (kg/m<sup>3</sup>):</label>
+            <input type="number" name="age" min="1" max="365" id="age" placeholder="Enter age ">
+        </div>
+
+        <div class="form-group">
+            <input type="submit" value="Submit">
+        </div>
+    </form>
+    </div>
+
+    <h2>
+        Predicted strength is: {{results}}
+    </h2>
+</body>
+</html>
+
